@@ -1,0 +1,19 @@
+{% extends "todoApp/base.html" %} {% block body %}
+
+<h2>Add todo Item</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add</button>
+</form>
+
+<div class="todo_display">
+    <ul>
+        {%for item in items %}
+        <li>
+            {{item.title}} - {{item.description}}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{%endblock%}

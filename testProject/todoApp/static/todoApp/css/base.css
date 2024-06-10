@@ -24,3 +24,10 @@
 h2{
     padding-top: 20px;
 }
+
+.todo_display{
+    padding: 20px;
+    background-color: navy;
+    color: white;
+
+}
