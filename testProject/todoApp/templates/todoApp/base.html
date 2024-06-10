@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		{% comment %} Add css as following {% endcomment %}
+		<link rel="stylesheet" href="{% static 'todoApp/css/base.css' %}" />
+		
+		<title>{%block title%}Base Layout{%endblock%}</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="user_data">
+				<h2>USER NAME:</h2>
+				{{name}}
+			</div>
+			<div class="tasksDisplay">
+				<h2>Tasks</h2>
+			</div>
+		</div>
+
+		
+	</body>
+</html>

@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    display: flex;
+    height: 100vh;
+    text-align: center;
+}
+
+.user_data{
+    flex: 1;
+    background-color: grey;
+    margin: 10px;
+}
+
+.tasksDisplay{
+    flex: 4;
+    background-color: rgba(228, 223, 223, 0.785);
+    margin: 10px;
+}
+
+h2{
+    padding-top: 20px;
+}
