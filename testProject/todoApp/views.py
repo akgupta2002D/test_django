@@ -1,13 +1,10 @@
-from django.contrib.auth import logout
+from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .forms import UserRegistrationForm, TodoItemForm
-from django.contrib.auth import login
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import TodoItem
-
-# Create your views here.
 
 
 @login_required
@@ -42,7 +39,7 @@ def register(request):
             user.set_password(form.cleaned_data['password'])
             user.save()
             login(request, user)
-            return redirect('login')
+            return redirect('todo_list')
     else:
         form = UserRegistrationForm()
     return render(request, 'todoApp/register.html', {'form': form})
@@ -61,6 +58,6 @@ def login_view(request):
     return render(request, 'todoApp/login.html')
 
 
-def logout(request):
-
+def logout_view(request):
+    auth_logout(request)
     return redirect('login')
