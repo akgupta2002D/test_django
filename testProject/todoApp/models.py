@@ -13,3 +13,12 @@ class TodoItem(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_picture = models.ImageField(
+        upload_to='profile_pictures', null=True, blank=True)
+
+    def __str__(self):
+        return self.user.username

@@ -80,16 +80,24 @@ WSGI_APPLICATION = "testProject.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": env('DB_NAME'),
+#         "USER": env('DB_USER'),
+#         "PASSWORD": env('DB_PASSWORD'),
+#         "HOST": env('DB_HOST'),
+#         "PORT": env('DB_PORT'),
+#     }
+# }
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": env('DB_NAME'),
-        "USER": env('DB_USER'),
-        "PASSWORD": env('DB_PASSWORD'),
-        "HOST": env('DB_HOST'),
-        "PORT": env('DB_PORT'),
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -147,12 +155,12 @@ LOGOUT_REDIRECT_URL = 'login'  # URL to redirect after logout
 # Initialize environment variables
 
 
-AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
-AWS_S3_SIGNATURE_NAME = env('AWS_S3_SIGNATURE_NAME')
-AWS_S3_REGION_NAME = env('AWS_S3_REGION_NAME')
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-AWS_S3_VERITY = True
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+# AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
+# AWS_S3_SIGNATURE_NAME = env('AWS_S3_SIGNATURE_NAME')
+# AWS_S3_REGION_NAME = env('AWS_S3_REGION_NAME')
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = None
+# AWS_S3_VERITY = True
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

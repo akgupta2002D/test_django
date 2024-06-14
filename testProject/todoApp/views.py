@@ -1,3 +1,5 @@
+from .models import UserProfile
+from .forms import UserProfileForm
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
@@ -9,8 +11,10 @@ from .models import TodoItem
 
 @login_required
 def base(request):
+    user = request.user
     context = {
         "name": "Ankit",
+        'user': user,
     }
     return render(request, "todoApp/base.html", context)
 
@@ -28,7 +32,8 @@ def todo_list(request):
         form = TodoItemForm()
 
     items = TodoItem.objects.filter(user=request.user)
-    return render(request, 'todoApp/todoShow.html', {'form': form, 'items': items})
+    profile, created = UserProfile.objects.get_or_create(user=request.user)
+    return render(request, 'todoApp/todoShow.html', {'form': form, 'items': items, 'profile': profile})
 
 
 def register(request):
@@ -61,3 +66,16 @@ def login_view(request):
 def logout_view(request):
     auth_logout(request)
     return redirect('login')
+
+
+@login_required
+def profile_picture_upload(request):
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, request.FILES,
+                               instance=request.user.userprofile)
+        if form.is_valid():
+            form.save()
+            return redirect('todo_list')
+    else:
+        form = UserProfileForm(instance=request.user.userprofile)
+    return render(request, 'todoApp/profileUpload.html', {'form': form})

@@ -1,0 +1,9 @@
+{% extends "todoApp/base.html" %} {% block body %}
+<h2>Upload Profile Picture</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+</form>
+
+{%endblock%}
