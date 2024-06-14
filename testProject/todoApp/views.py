@@ -12,9 +12,11 @@ from .models import TodoItem
 @login_required
 def base(request):
     user = request.user
+    profile, created = UserProfile.objects.get_or_create(user=user)
     context = {
         "name": "Ankit",
         'user': user,
+        'profile': profile,
     }
     return render(request, "todoApp/base.html", context)
 

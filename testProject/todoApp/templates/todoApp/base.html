@@ -26,8 +26,12 @@
 				<h3>User Profile</h3>
 				<div
 					style="display: inline-block; width: 250px; height: auto; border: 1px solid #ddd; border-radius: 10px; overflow: hidden;">
+					{% if user.userprofile.profile_picture %}
 					<img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture"
 						style="width: 100%; height: auto; display: block;">
+					{% else %}
+					<p>No profile added</p>
+					{% endif %}
 				</div>
 				<a href="{% url 'profile_picture_upload' %}" style="display: block; margin-top: 10px;">Edit Profile
 					Picture</a>
